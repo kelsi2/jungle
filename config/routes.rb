@@ -1,3 +1,5 @@
+# bin/rake routes to see all routes
+
 Rails.application.routes.draw do
 
   root to: 'products#index'
