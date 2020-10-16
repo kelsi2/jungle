@@ -1,9 +1,11 @@
-<h1>Login</h1>
+<header class="page-header">
+  <h1>Login</h1>
+</header>
 
-<%= form_tag [:sessions] do %>
+<%= simple_form_for :sessions do |f| %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+  <%= f.input :email, placeholder: "user@domain.com", error: "Please enter an email." %>
+  <%= f.input :password, placeholder: "Enter your password", error: "Please enter a password." %>
+  <%= f.button :submit, "Login" %>
 
 <% end %>
