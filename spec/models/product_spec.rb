@@ -13,7 +13,7 @@ RSpec.describe Product, type: :model do
       expect(@product).to be_valid
     end
 
-    it 'should return an error if name is nil' do
+    it 'should not save and return an error if name is nil' do
       @category = Category.create(name: "Games")
       @product = Product.new(
         name: nil,
@@ -22,9 +22,10 @@ RSpec.describe Product, type: :model do
         category_id: @category.id
       )
       expect(@product).to_not be_valid
+      expect(@product.errors.full_messages).to include("Name can't be blank")
     end
 
-    it 'should return an error if price is nil' do
+    it 'should not save if price is nil' do
       @category = Category.create(name: "Games")
       @product = Product.new(
         name: "Catan",
