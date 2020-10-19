@@ -9,13 +9,14 @@ class UsersController < ApplicationController
     if @user.save!
       session[:user_id] = @user.id
       redirect_to :root, notice: "Account created successfully"
+    elsif @user = User.find_by_email(params[:email])
+      flash[:error] = "That email is already registered."
     else
-      flash[:error] = "Unable to register, please try again."
       render :new
     end
   end
 
-    private
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
