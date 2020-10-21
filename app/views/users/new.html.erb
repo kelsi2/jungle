@@ -2,9 +2,10 @@
   <h1>Register</h1>
 </header>
 
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for :user, url: '/users'  do |f| %>
 
-  <%= f.input :name, error: "Please enter a username.", placeholder: "Username" %>
+  <%= f.input :first_name, error: "Please enter your first name.", placeholder: "First name" %>
+  <%= f.input :last_name, error: "Please enter your last name.", placeholder: "Last name" %>
   <%= f.input :email, placeholder: "user@domain.com", error: "Please enter an email." %>
   <%= f.input :password, placeholder: "Enter your password", error: "Please enter a password." %>
   <%= f.input :password_confirmation, placeholder: "Please enter you password again", error: "Password doesn't match, please try again.", class: "btn btn-primary" %>

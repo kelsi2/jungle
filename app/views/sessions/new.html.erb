@@ -2,10 +2,12 @@
   <h1>Login</h1>
 </header>
 
-<%= simple_form_for :sessions do |f| %>
-
-  <%= f.input :email, placeholder: "user@domain.com", error: "Please enter an email." %>
-  <%= f.input :password, placeholder: "Enter your password", error: "Please enter a password." %>
-  <%= f.button :submit, "Login" %>
-
+<%= form_tag '/login', :class => 'form-inline' do %>
+  <%= label_tag "Email:" %>
+  <%= text_field_tag :email, params[:email], class: 'form-control', autofocus: true %>
+  
+  <%= label_tag "Password:" %> 
+  <%= password_field_tag :password, params[:password], class: 'form-control', autofocus: true %>
+  
+  <%= submit_tag "Login", class: 'btn btn-default btn-lg btn-submit' %>
 <% end %>

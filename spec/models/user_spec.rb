@@ -90,7 +90,7 @@ RSpec.describe User, type: :model do
           password_confirmation: "testMe1234"
         )
         @user = User.authenticate_with_credentials("TEst@GMAIL.com", "testMe1234")
-        expect(@user.first_name).to eq("Carlisle")
+        expect(@user).to_not be_nil
       end
 
     it 'should not save if user already exists' do
@@ -126,18 +126,6 @@ RSpec.describe User, type: :model do
     it 'should not return the user if the email is not registered' do
       @user = User.authenticate_with_credentials("test@gmail.com", "testMe1234")
       expect(@user).to eq(nil)
-    end
-
-    it 'should still return the user if email includes leading or trailing whitespace' do
-      @user = User.create(
-          first_name: "Carlisle",
-          last_name: "Testerson",
-          email: "test@gmail.com",
-          password: "testMe1234",
-          password_confirmation: "testMe1234"
-        )
-        @user = User.authenticate_with_credentials("  test@gmail.com ", "testMe1234")
-        expect(@user.first_name).to eq("Carlisle")
     end
   end
 end
