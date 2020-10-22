@@ -132,5 +132,29 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+# REVIEWS
+
+puts "Re-creating Users..."
+
+User.destroy_all
+
+User.create!({
+    email: "TestMe@gmail.com",
+    password: '$2a$10$zm8mVFNc50ree4/SRs8c2eC3LWdUrgi6JzzGFVal/5S6sNbGK7jEi',
+    password_confirmation: '$2a$10$zm8mVFNc50ree4/SRs8c2eC3LWdUrgi6JzzGFVal/5S6sNbGK7jEi',
+    first_name: "Testly",
+    last_name: "Testerton"
+})
+
+prod1 = Product.find_by! id: 1
+user1 = User.find_by! email: "TestMe@gmail.com"
+
+puts "Re-creating Reviews ..."
+
+prod1.reviews.create!({
+    user_id: 1,
+    description: "Not too shabby",
+    rating: 3
+})
 
 puts "DONE!"
